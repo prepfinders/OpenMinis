@@ -5,6 +5,9 @@
 
 **Your private, on-device AI agent.**
 
+Ships on iOS and Android as **Auris AI** (brand palette, Halo mark and app name; the
+project, bundle and package identifiers remain OpenMinis).
+
 OpenMinis brings leading models — Claude, GPT, Gemini and more — into a native
 mobile experience, and gives them a real computer to work with: a full Linux
 shell running on your device, browser automation, extensible skills, persistent
