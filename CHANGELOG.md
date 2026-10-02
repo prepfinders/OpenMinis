@@ -5,9 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.0] (iOS build 2, Android versionCode 26) — 2026-10-02
+## [2.0] (iOS build 3, Android versionCode 26) — 2026-10-02
 
 ### Changed
+- iOS now ships under the SoloSync App ID `com.solosync.aurisai` (extensions
+  `.ShareExtension`, `.FileProvider`, `.AgentWidget`), app group
+  `group.com.solosync.aurisai` and iCloud container
+  `iCloud.com.solosync.aurisai`, signed with the SoloSync team. Deployment
+  target raised to iOS 17.0 by the Xcode 27 project upgrade. This is a new
+  App ID, so it installs alongside, not over, the old OpenMinis app.
 - Rebranded both apps to **Auris AI** from the design handoff
   (`design_handoff_auris_rebrand`). Display name is "Auris AI"; UI copy,
   permission prompts, notifications, Shortcuts and Files/extension names say
