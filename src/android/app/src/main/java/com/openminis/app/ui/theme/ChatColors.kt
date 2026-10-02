@@ -58,41 +58,46 @@ data class ChatPalette(
     val fabAccent: Color,
 )
 
+// Auris brand light tokens (design_handoff_auris_rebrand/README.md):
+// bg Cream #FBFFF1, surface #FFFFFF, grouped #F1F3EA, elevated #EEF0E8,
+// text Ink #3C3744 / text2 #665F70 / text3 #948E9C, primary Deep #090C9B,
+// accent Royal #3D52D5, chip #E1E8F3, separator rgba(60,55,68,.12),
+// inputBorder rgba(60,55,68,.16).
 val LightChatPalette = ChatPalette(
     isDark = false,
-    background = Color.White,
-    secondaryBg = Color(0xFFF2F2F7),
+    background = Color(0xFFFBFFF1),
+    secondaryBg = Color(0xFFF1F3EA),
     inputBg = Color.White,
-    inputIconBg = Color(0xFFF2F2F7),
+    inputIconBg = Color(0xFFEEF0E8),
     inputIconBorder = Color.Transparent,
-    inputBorder = Color(0x4D3C3C43),
-    primaryText = Color(0xFF000000),
-    secondaryText = Color(0x993C3C43),
-    tertiaryText = Color(0x4D3C3C43),
-    disabledText = Color(0x2E3C3C43),
-    userBubble = Color(0x1E787880),
-    toolBg = Color(0xFFF2F2F7),
-    toolBorder = Color(0x14000000),
-    toolCapsuleBg = Color(0xFFF2F2F7),
-    separator = Color(0x4D3C3C43),
-    sendButton = Color(0xFF000000),
-    sendButtonDisabled = Color(0x2E3C3C43),
+    inputBorder = Color(0x293C3744),
+    primaryText = Color(0xFF3C3744),
+    secondaryText = Color(0xFF665F70),
+    tertiaryText = Color(0xFF948E9C),
+    disabledText = Color(0x4D3C3744),
+    userBubble = Color(0xFFE1E8F3),
+    toolBg = Color(0xFFEEF0E8),
+    toolBorder = Color(0x1F3C3744),
+    toolCapsuleBg = Color(0xFFEEF0E8),
+    separator = Color(0x1F3C3744),
+    sendButton = Color(0xFF090C9B),
+    sendButtonDisabled = Color(0x4D3C3744),
     codeBlockBg = Color(0xFF000000),
     codeBlockText = Color(0xFF34C759),
-    inlineCodeBg = Color(0xFFF2F2F7),
+    inlineCodeBg = Color(0xFFEEF0E8),
     inlineCodeText = Color(0xFFFF9500),
-    link = Color(0xFF007AFF),
+    link = Color(0xFF3D52D5),
     blockquoteBar = Color(0x80FF9500),
-    thinking = Color(0xFF007AFF),
+    thinking = Color(0xFF3D52D5),
     warningBg = Color(0x14FF9500),
     warningText = Color(0x73000000),
-    tableBorder = Color(0x1F000000),
+    tableBorder = Color(0x1F3C3744),
     inputShadow = Color.Transparent,
-    toastBg = Color(0x2E007AFF),
+    toastBg = Color(0x2E3D52D5),
     thumbnailBorder = Color(0x33808080),
     sheetHeaderBg = Color(0xFFFFFFFF),
-    sheetHeaderBorder = Color(0x1A000000),
-    fabAccent = Color(0xFFB7AF96),
+    sheetHeaderBorder = Color(0x1F3C3744),
+    fabAccent = Color(0xFF090C9B),
 )
 
 // T153: Android-specific dark palette tweaks. iOS borrows the system
@@ -104,53 +109,52 @@ val LightChatPalette = ChatPalette(
 // layers ~6-10% so the contrast survives the brightness gap; the pure
 // `background` itself stays #000 because every other color is keyed
 // to "darker than this".
+//
+// Auris brand dark tokens: bg #141219, surface #1F1C24, elevated #2A2630,
+// text Cream #FBFFF1 / text2 Mist #B4C5E4 / text3 #8A8694, primary Royal
+// #3D52D5, accent Mist, chip #252A52, separator rgba(251,255,241,.10),
+// inputBorder rgba(180,197,228,.20). The lift between layers is kept so the
+// ramp still separates on dimmer panels.
 val DarkChatPalette = ChatPalette(
     isDark = true,
-    background = Color(0xFF000000),
-    secondaryBg = Color(0xFF26262A),
-    inputBg = Color(0xFF2C2C30),
-    inputIconBg = Color(0xFF1C1C1E),
-    inputIconBorder = Color(0xFF595959),
-    inputBorder = Color(0x40545458),
-    primaryText = Color(0xFFFFFFFF),
-    secondaryText = Color(0x99EBEBF5),
-    tertiaryText = Color(0x4DEBEBF5),
-    disabledText = Color(0x2EEBEBF5),
-    // [T-android-user-bubble-dark-contrast] The old 0x247676D7 was a 14%-alpha
-    // translucent blue-grey that washed out to near-invisible on the #000 chat
-    // background on real (≈500-nit) displays — exactly the "crush to a near-black
-    // wash" failure the palette header warns about. Use an OPAQUE cool slate-blue
-    // so the user's own messages read as a distinct accent; white primaryText
-    // stays legible on it.
-    userBubble = Color(0xFF2F3A5C),
-    toolBg = Color(0xFF3A3A3F),
-    toolBorder = Color(0x40545458),
-    toolCapsuleBg = Color(0xFF28282C),
-    separator = Color(0x99545458),
-    sendButton = Color(0xFFFFFFFF),
-    sendButtonDisabled = Color(0x2EEBEBF5),
-    codeBlockBg = Color(0xFF262626),
+    background = Color(0xFF141219),
+    secondaryBg = Color(0xFF1F1C24),
+    inputBg = Color(0xFF1F1C24),
+    inputIconBg = Color(0xFF2A2630),
+    inputIconBorder = Color(0xFF3A3640),
+    inputBorder = Color(0x33B4C5E4),
+    primaryText = Color(0xFFFBFFF1),
+    secondaryText = Color(0xFFB4C5E4),
+    tertiaryText = Color(0xFF8A8694),
+    disabledText = Color(0x4DFBFFF1),
+    // [T-android-user-bubble-dark-contrast] Opaque chip colour so the user's
+    // own messages read as a distinct accent on the #141219 background; the
+    // Cream primaryText stays legible on it.
+    userBubble = Color(0xFF252A52),
+    toolBg = Color(0xFF2A2630),
+    toolBorder = Color(0x1AFBFFF1),
+    toolCapsuleBg = Color(0xFF1F1C24),
+    separator = Color(0x1AFBFFF1),
+    sendButton = Color(0xFFB4C5E4),
+    sendButtonDisabled = Color(0x4DFBFFF1),
+    codeBlockBg = Color(0xFF1F1C24),
     codeBlockText = Color(0xFF8CF38C),
-    // [T-inline-code-dark-bg-android] Lifted into the T153 ramp — the old
-    // #1C1C1E chip was invisible on the #000 chat background (the comment
-    // block above explains why non-background layers need the ~6-10% lift;
-    // this one was missed). #34343A sits between inputBg (#2C2C30) and
-    // toolBg (#3A3A3F), clearly above codeBlockBg (#262626) so small inline
-    // chips read against both the wash and fenced blocks.
-    inlineCodeBg = Color(0xFF34343A),
+    // [T-inline-code-dark-bg-android] Inline chips sit one step above the
+    // surface (#1F1C24) and the fenced code block so they read against both.
+    inlineCodeBg = Color(0xFF2A2630),
     inlineCodeText = Color(0xFFFF9F0A),
-    link = Color(0xFF0A84FF),
+    link = Color(0xFFB4C5E4),
     blockquoteBar = Color(0x80FF9F0A),
-    thinking = Color(0xFF0A84FF),
+    thinking = Color(0xFF3D52D5),
     warningBg = Color(0x14FF9F0A),
     warningText = Color(0x73FFFFFF),
-    tableBorder = Color(0xFF38383A),
+    tableBorder = Color(0xFF332F38),
     inputShadow = Color(0x80000000),
-    toastBg = Color(0x2E0A84FF),
-    thumbnailBorder = Color(0x20545458),
-    sheetHeaderBg = Color(0xFF2C2C2E),
-    sheetHeaderBorder = Color(0x33FFFFFF),
-    fabAccent = Color(0xFF504C42),
+    toastBg = Color(0x2E3D52D5),
+    thumbnailBorder = Color(0x33B4C5E4),
+    sheetHeaderBg = Color(0xFF1F1C24),
+    sheetHeaderBorder = Color(0x1AFBFFF1),
+    fabAccent = Color(0xFF3D52D5),
 )
 
 val LocalChatPalette = compositionLocalOf { LightChatPalette }

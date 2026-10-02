@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#EFF2F6</color>
+    <!-- Auris brand: adaptive-icon background is Royal; the mark (Cream/Deep)
+         sits in the foreground layer. -->
+    <color name="ic_launcher_background">#3D52D5</color>
 </resources>

@@ -77,11 +77,15 @@ enum ChatColors {
     static let primaryText = Color(UIColor.label)
     static let secondaryText = Color(UIColor.secondaryLabel)
     static let tertiaryText = Color(UIColor.tertiaryLabel)
-    static let userBubble = Color(UIColor.tertiarySystemFill)
+    // Auris brand (design_handoff_auris_rebrand/README.md): chip tint for the
+    // pre-iOS 26 user bubble, Royal/Mist accent, Deep/Mist send button. The
+    // send button keeps the "inverse of systemBackground" contract the glyph
+    // and swipe-hint rely on: Deep carries a light glyph, Mist a dark one.
+    static let userBubble = Color("BrandChip")
     static let toolBg = Color(UIColor.tertiarySystemGroupedBackground)
     static let toolBorder = Color(UIColor.separator).opacity(0.5)
-    static let accent = Color(UIColor.label)
-    static let sendButton = Color(UIColor.label)
+    static let accent = Color("BrandAccent")
+    static let sendButton = Color("BrandSendButton")
     static let sendButtonDisabled = Color(UIColor.quaternaryLabel)
 }
 
@@ -457,9 +461,9 @@ struct AIChatView: View {
     /// Session being edited via the title-pill tap. Drives the SessionEditSheet.
     @State private var titlePillEditSession: ChatSession?
     /// Default chat title for sessions without a generated title. Sourced
-    /// from SOUL.md (`name`), falls back to "Minis". Refreshed on .soulMdChanged.
+    /// from SOUL.md (`name`), falls back to "Auris". Refreshed on .soulMdChanged.
     @State private var soulName: String = SoulStore.cachedMetadata.name.isEmpty
-        ? "Minis" : SoulStore.cachedMetadata.name
+        ? "Auris" : SoulStore.cachedMetadata.name
 
     /// True when any sheet or fullScreenCover is presented (suppress auto-focus to avoid keyboard bugs).
     private var hasOverlayPresented: Bool {
@@ -2119,7 +2123,7 @@ struct AIChatView: View {
         // when one exists (auto-generated or user-renamed). Tap opens the
         // same SessionEditSheet used from the home screen so users can
         // rename / re-categorize without leaving the chat. Falls back to
-        // the SOUL.md `name` (or "Minis") for draft sessions or before a
+        // the SOUL.md `name` (or "Auris") for draft sessions or before a
         // title has been generated.
         let sessionTitle: String? = (titlePillSession?.title?.trimmingCharacters(in: .whitespacesAndNewlines))
             .flatMap { $0.isEmpty ? nil : $0 }
@@ -2156,7 +2160,7 @@ struct AIChatView: View {
         // 2026-05-20 tightening overlapped row 2 into the title's line box by
         // 8pt — more than the 13pt font's entire descender zone (~3.1pt), so
         // any title containing g/p/y/z visually fused with the model pill
-        // (only descender-less titles like "Minis" hid it). -3 keeps a ~2pt
+        // (only descender-less titles like "Auris" hid it). -3 keeps a ~2pt
         // visible gap for descender titles. HEIGHT-NEUTRAL: the 5pt spent
         // here is reclaimed inside row 2 (provider-row bottom clearance
         // 4 → 1 and group vertical padding 3 → 2 on legacy), so the stack's
@@ -2214,7 +2218,7 @@ struct AIChatView: View {
                     .padding(.top, legacyLayout ? 0 : 2)
                     .onReceive(NotificationCenter.default.publisher(for: .soulMdChanged)) { _ in
                         let n = SoulStore.cachedMetadata.name
-                        soulName = n.isEmpty ? "Minis" : n
+                        soulName = n.isEmpty ? "Auris" : n
                     }
             }
             .buttonStyle(.plain)
@@ -2485,7 +2489,7 @@ struct AIChatView: View {
                     || next?.title != titlePillSession?.title
                     || next?.category != titlePillSession?.category {
                     // Direct replace — animating the toolbar title makes the
-                    // old "Minis" string slide before the real title swaps
+                    // old "Auris" string slide before the real title swaps
                     // in, which looks broken. SwiftUI's default crossfade
                     // for non-animated text changes is what we want.
                     titlePillSession = next

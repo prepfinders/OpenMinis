@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="seed">#6750A4</color>
+    <color name="seed">#090C9B</color>
     <!--
       T-android-shortcut-icons-blank: foreground glyph color for the
-      app-icon shortcut adaptive icons. Dark glyph on the light
-      @color/ic_launcher_background (#EFF2F6); the values-night variant
-      flips to a light glyph on the dark night background (#2C3034) so
-      the shortcuts stay legible in both themes. Fixed colors (not theme
+      app-icon shortcut adaptive icons. Cream glyph on the Royal
+      @color/ic_launcher_background; the values-night variant uses a
+      Mist glyph on the dark night background (#141219) so the
+      shortcuts stay legible in both themes. Fixed colors (not theme
       attrs) because the launcher process renders shortcut icons and
       can't resolve the app's ?attr tints.
     -->
-    <color name="shortcut_icon_fg">#1F2933</color>
+    <color name="shortcut_icon_fg">#FBFFF1</color>
 </resources>
